@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Visita</title>
+</head>
+<body>
+<h2>Editar visita</h2>
+
+<form th:action="@{/editar/{id}(id=${visita.id})}" method="post" th:object="${visita}">
+  <input type="hidden" th:field="*{id}" />
+
+  <div>
+    <label for="local">Local:</label>
+    <input type="text" id="local" name="local" th:field="*{local}" required/>
+  </div>
+
+  <div>
+    <label for="dniAfiliado">DNI Afiliado:</label>
+    <input type="text" id="dniAfiliado" name="dniAfiliado" th:field="*{dniAfiliado}" required/>
+  </div>
+
+  <div>
+    <label for="fecha">Fecha:</label>
+    <input type="date" id="fecha" name="fecha" th:field="*{fecha}" required/>
+  </div>
+
+  <div>
+    <label for="hora">Hora:</label>
+    <input type="time" id="hora" name="hora" th:field="*{hora}" required/>
+  </div>
+
+  <div>
+    <button type="submit">Guardar cambios</button>
+  </div>
+</form>
+
+<a href="/visitas">Volver al listado</a>
+</body>
+</html>

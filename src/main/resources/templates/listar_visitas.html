@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Listado de Visitas</title>
+</head>
+<body>
+<h2>Listado de Visitas</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Local</th>
+    <th>DNI Afiliado</th>
+    <th>Fecha</th>
+    <th>Hora</th>
+    <th>Acciones</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="visita : ${visitas}">
+    <td th:text="${visita.id}"></td>
+    <td th:text="${visita.local}"></td>
+    <td th:text="${visita.dniAfiliado}"></td>
+    <td th:text="${visita.fecha}"></td>
+    <td th:text="${visita.hora}"></td>
+    <td>
+      <form th:action="@{/editar/{id}(id=${visita.id})}" method="get">
+        <button type="submit">Editar</button>
+      </form>
+
+
+      <form th:action="@{/eliminar/{id}(id=${visita.id})}" method="post">
+        <input type="hidden" name="_method" value="delete" />
+        <button type="submit">Eliminar</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<a href="/crear">Crear nueva visita</a>
+</body>
+</html>
